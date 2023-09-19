@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>MusicBase - Sofify</title>
+  </head>
+  <body>
+    <h1>Sofify</h1>
+
+    <!-- Nav Bar with custom links -->
+    <!-- The href must match with an id of a view (section) -->
+    <nav>
+      <a href="#home" class="view-link">Home</a>
+      <a href="#artists" class="view-link">Artists</a>
+      <a href="#tracks" class="view-link">Tracks</a>
+      <a href="#albums" class="view-link">Albums</a>
+      <a href="#playlists" class="view-link">Playlist</a>
+    </nav>
+
+    <!-- Views -->
+    <!-- All views (sections) must have an id -->
+    <main>
+      <!-- Home View -->
+      <!-- Route: #home -->
+      <section id="home" class="view-content">
+        <h2>Home</h2>
+        <p>
+          This is Sofify, a simple showing of different Artists and their tracks
+          and albums
+        </p>
+      </section>
+
+      <!-- Artists View -->
+      <!-- Route: #artists -->
+      <section id="artists" class="view-content">
+        <h2>Artists</h2>
+        <!-- table -->
+        <table id="artist_table">
+          <!-- tablerow -->
+          <tr>
+            <!-- tableheader -->
+            <th>Name</th>
+            <th>Image</th>
+            <th>website</th>
+        </tr>
+
+        </>
+      </section>
+
+      <!-- Tracks View -->
+      <!-- Route: #tracks -->
+      <section id="tracks" class="view-content">
+        <h2>Tracks</h2>
+        <!-- table -->
+        <table>
+          <!-- tablerow -->
+          <tr>
+            <!-- tableheader -->
+            <th></th>
+          </tr>
+        </table>
+      </section>
+
+      <!-- Albums View -->
+      <!-- Route: #albums -->
+      <section id="albums" class="view-content">
+        <h2>Albums</h2>
+        <!-- table -->
+        <table>
+          <!-- tablerow -->
+          <tr>
+            <!-- tableheader -->
+            <th></th>
+          </tr>
+        </table>
+      </section>
+
+      <!-- Playlists View -->
+      <!-- Route: #playlists -->
+      <section id="playlists" class="view-content">
+        <h2>Playlists</h2>
+        <!-- table -->
+        <table>
+          <!-- tablerow -->
+          <tr>
+            <!-- tableheader -->
+            <th></th>
+          </tr>
+        </table>
+      </section>
+    </main>
+  </body>
+  <script src="app.js" type="module"></script>
+</html>
