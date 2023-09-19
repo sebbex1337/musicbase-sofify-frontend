@@ -9,7 +9,6 @@ window.addEventListener("load", initApp);
 
 // hjælpefunktion
 async function initApp() {
-  console.log("Musicbase is running 🎉");
-  initViews();
+	console.log("Musicbase is running 🎉");
+	initViews();
 }
-
