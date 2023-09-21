@@ -1,4 +1,4 @@
-const endpoint = "http://localhost:3333";
+const endpoint = "http://127.0.0.1:3333";
 
 // ----- Read all artists ----- //
 async function readArtists() {
