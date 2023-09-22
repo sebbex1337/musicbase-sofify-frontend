@@ -81,3 +81,11 @@ img {
 	height: auto;
 	width: 25%;
 }
+
+/* take artist_search_table and make it a grid and seperate the titels */
+.artist_search_table {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 1em;
+}
+
