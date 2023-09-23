@@ -16,7 +16,6 @@
 			<a href="#artists" class="view-link">Artists</a>
 			<a href="#tracks" class="view-link">Tracks</a>
 			<a href="#albums" class="view-link">Albums</a>
-			<a href="#playlists" class="view-link">Playlist</a>
 		</nav>
 
 		<!-- Views -->
@@ -30,44 +29,42 @@
 				<!--Search bar-->
 				<input type="search" id="search" placeholder="Search for" />
 				<button type="submit">Search</button>
+				<section class="search-tables">
+					<table id="artist_search_table" cellspacing="0">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Image</th>
+								<th>website</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
 
-				<table id="artist_search_table" cellspacing="0">
-					<thead>
-						<tr>
-							<th>Name</th>
-							<th>Image</th>
-							<th>website</th>
-						</tr>
-					</thead>
-					<tbody></tbody>
-				</table>
+					<!-- table -->
+					<table id="track_search_table" cellspacing="0">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Artist(s)</th>
+								<th>Duration</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
 
-				<!-- table -->
-				<table id="track_search_table" cellspacing="0">
-					<thead>
-						<tr>
-							<th>Name</th>
-							<th>Artist(s)</th>
-							<th>Duration</th>
-						</tr>
-					</thead>
-					<tbody></tbody>
-				</table>
-
-				<table id="album_search_table" cellspacing="0">
-					<thead>
-						<tr>
-							<th>Name</th>
-							<th>Release Date</th>
-							<th>Image</th>
-							<th>Artist</th>
-						</tr>
-					</thead>
-					<tbody></tbody>
-				</table>
-
-
-
+					<table id="album_search_table" cellspacing="0">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Release Date</th>
+								<th>Image</th>
+								<th>Artist</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+				</section>
 			</section>
 
 			<!-- Artists View -->
@@ -115,21 +112,6 @@
 							<th>Release Date</th>
 							<th>Image</th>
 							<th>Artist</th>
-						</tr>
-					</thead>
-					<tbody></tbody>
-				</table>
-			</section>
-
-			<!-- Playlists View -->
-			<!-- Route: #playlists -->
-			<section id="playlists" class="view-content">
-				<h2>Playlists</h2>
-				<!-- table -->
-				<table>
-					<thead>
-						<tr>
-							<th></th>
 						</tr>
 					</thead>
 					<tbody></tbody>
