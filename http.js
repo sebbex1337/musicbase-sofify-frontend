@@ -21,6 +21,7 @@ async function readAlbums() {
 	return albumsData;
 }
 
+// ----- Read all searched ---- //
 async function getAllSearched(searchValue) {
 	const res = await fetch(`${endpoint}/search/?q=${searchValue}`);
 	return await res.json();
