@@ -1,4 +1,4 @@
-import { readArtists, readTracks, readAlbums, getAllSearched } from "./http.js";
+import { readArtists, readTracks, readAlbums, getAllSearched } from "./controller/http.js";
 import { initViews } from "./view.js";
 
 window.addEventListener("load", initApp);
