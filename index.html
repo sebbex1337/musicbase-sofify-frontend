@@ -7,8 +7,6 @@
 		<title>MusicBase - Sofify</title>
 	</head>
 	<body>
-		<h1>Sofify</h1>
-
 		<!-- Nav Bar with custom links -->
 		<!-- The href must match with an id of a view (section) -->
 		<nav>
@@ -71,17 +69,23 @@
 			<!-- Route: #artists -->
 			<section id="artists" class="view-content">
 				<h2>Artists</h2>
+				<button id="cadBtn">Create Artist</button>
 				<!-- table -->
-				<table id="artist_table" cellspacing="0">
-					<thead>
-						<tr>
-							<th>Name</th>
-							<th>Image</th>
-							<th>website</th>
-						</tr>
-					</thead>
-					<tbody></tbody>
-				</table>
+				<section id="artist-table-container" class="grid-container">
+					
+				</section>
+				<dialog class="create-dialog" id="create-artist-dialog">
+				<section class="artist-create-form-container">
+						<form id="create-artist" method="dialog">
+							<h2>Create new Artist</h2>
+							<input type="text" name="name" placeholder="Enter name" required>
+							<input type="url" name="image" placeholder="Enter image URL" required>
+							<input type="url" name="website" placeholder="Enter website URL" required>
+							<input type="submit" name="submit-btn", value="Create Artist">
+							<button type="button">Close</button>
+						</form>
+				</section>
+				</dialog>
 			</section>
 
 			<!-- Tracks View -->
@@ -89,33 +93,61 @@
 			<section id="tracks" class="view-content">
 				<h2>Tracks</h2>
 				<!-- table -->
-				<table id="track_table" cellspacing="0">
-					<thead>
-						<tr>
-							<th>Name</th>
-							<th>Artist(s)</th>
-							<th>Duration</th>
-						</tr>
-					</thead>
-					<tbody></tbody>
-				</table>
+				<section class="track-table-container">
+					<table id="track_table" cellspacing="0">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Artist(s)</th>
+								<th>Duration</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+				</section>
+				<dialog class="create-dialog" id="Create-track-dialog">
+				<section class="track-create-form-container">
+					<form id="create-track" method="dialog">
+						<h2>Create new Track</h2>
+						<input type="text" placeholder="Enter song name" required>
+						<input type="text" placeholder="Enter artist" required>
+						<input type="text" placeholder="Enter song duration with format 00:00" required>
+						<button> Create track </button>
+					</form>
+				</section>
+				</dialog>
 			</section>
+			
 
 			<!-- Albums View -->
 			<!-- Route: #albums -->
 			<section id="albums" class="view-content">
 				<h2>Albums</h2>
-				<table id="album_table" cellspacing="0">
-					<thead>
-						<tr>
-							<th>Name</th>
-							<th>Release Date</th>
-							<th>Image</th>
-							<th>Artist</th>
-						</tr>
-					</thead>
-					<tbody></tbody>
-				</table>
+				<section class="album-table-container">
+					<table id="album_table" cellspacing="0">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Release Date</th>
+								<th>Image</th>
+								<th>Artist</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+				</section>
+				<dialog class="create-dialog" id="create-album-dialog" open>
+				<section class="album-create-form-container">
+					<form id="create-album" method="dialog">
+						<h2>Create new Album</h2>
+						<input type="text" placeholder="Enter album name" required>
+						<input type="date" placeholder="Enter date album was released" required>
+						<input type="url" placeholder="Enter image URL" required>
+						<input type="text" placeholder="Enter name of artist" required>
+						<button>Create Album</button>
+					</form>
+				</section>
+				</dialog>
 			</section>
 		</main>
 	</body>
