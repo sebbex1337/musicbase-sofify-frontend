@@ -2,23 +2,25 @@ import Artist from "../model/artist.js";
 import Album from "../model/album.js";
 import Track from "../model/track.js";
 
-const endpoint = "http://127.0.0.1:3333";
+const endpoint = "http://localhost:3333";
 
 // --- lister --- //
 let allArtists = [];
 let allTracks = [];
 let allAlbums = [];
 
-let lastFetch = 0;
+let lastArtistsFetch = 0;
+let lastTracksFetch = 0;
+let lastAlbumsFetch = 0;
 
 // ----- Read all artists ----- //
 async function readAllArtists() {
     const now = Date.now();
-    const timeLastFetched = now - lastFetch;
+    const timeLastFetched = now - lastArtistsFetch;
     if (timeLastFetched > 10_000) {
-        console.log(now, "now");
+        /*         console.log(now, "now");
         console.log(timeLastFetched, "lasttimefetch");
-        console.log("Refetch");
+        console.log("Refetch"); */
         await readArtistsAgain();
     }
     return allArtists;
@@ -29,7 +31,7 @@ async function readArtistsAgain() {
     const artistsData = await res.json();
     allArtists = artistsData.map((jsonObj) => new Artist(jsonObj));
 
-    lastFetch = Date.now();
+    lastArtistsFetch = Date.now();
 }
 
 // ----- Create new artist ----- //
@@ -75,7 +77,7 @@ async function deleteArtist(artist) {
 // ---- Read all songs ------ //
 async function readAllTracks() {
     const now = Date.now();
-    const timeLastFetched = now - lastFetch;
+    const timeLastFetched = now - lastTracksFetch;
     if (timeLastFetched > 10_000) {
         await readTracksAgain();
     }
@@ -87,7 +89,14 @@ async function readTracksAgain() {
     const tracksData = await res.json();
     allTracks = tracksData.map((jsonObj) => new Track(jsonObj));
 
-    lastFetch = Date.now();
+    lastTracksFetch = Date.now();
+}
+
+async function getTracks() {
+    const res = await fetch(`${endpoint}/tracks`);
+    const tracksData = await res.json();
+    const allTracks = tracksData.map((jsonObj) => new Track(jsonObj));
+    return allTracks;
 }
 
 // ----- Create new song ----- //
@@ -133,7 +142,7 @@ async function deleteTrack(tracks) {
 // ----- Read all albums ---- //
 async function readAllAlbums() {
     const now = Date.now();
-    const timeLastFetched = now - lastFetch;
+    const timeLastFetched = now - lastAlbumsFetch;
     if (timeLastFetched > 10_000) {
         await readAlbumsAgain();
     }
@@ -144,8 +153,8 @@ async function readAlbumsAgain() {
     const res = await fetch(`${endpoint}/albums`);
     const albumsData = await res.json();
     allAlbums = albumsData.map((jsonObj) => new Album(jsonObj));
-    
-    lastFetch = Date.now();
+
+    lastAlbumsFetch = Date.now();
 }
 
 // ----- Create new album ----- //
@@ -191,7 +200,8 @@ async function deleteAlbum(albums) {
 // ----- Read all searched ---- //
 async function getAllSearched(searchValue) {
     const res = await fetch(`${endpoint}/search/?q=${searchValue}`);
-    return await res.json();
+    const searchData = await res.json();
+    return searchData;
 }
 
 export { readAllArtists, createArtist, updateArtist, deleteArtist, readAllTracks, createTrack, updateTrack, deleteTrack, readAllAlbums, createAlbum, updateAlbum, deleteAlbum, getAllSearched };

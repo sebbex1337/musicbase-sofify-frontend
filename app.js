@@ -109,7 +109,6 @@ function displaySearchAlbum(listOfAlbums) {
 
 // --- album display hjælpefunktion --- //
 function insertSearchAlbum(album) {
-    console.log(album.image);
     const albumHTML = /* HTML */ `
         <tr>
             <td>${album.name}</td>
