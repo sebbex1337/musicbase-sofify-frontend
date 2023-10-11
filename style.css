@@ -180,25 +180,46 @@ tbody tr:hover {
 	object-fit: cover;
 }
 
-.grid-item p {
-	padding-left: 0.5em;
+.grid-item section {
 	text-align: center;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
 }
 
 .grid-item h2 {
-	padding-left: 0.3em;
-	text-align: center;
+	margin: 0;
+}
+
+.grid-item a {
+	color: white;
 }
 
 .btn-delete {
-	background-color: #ff564f;
-	color: white;
 	border-radius: 16px;
-	margin-bottom: 0.1em;
 }
 
 .btn-update {
-	background-color: #ffd215;
-	color: black;
 	border-radius: 16px;
 }
+
+button {
+	cursor: pointer;
+	font-size: 1em;
+	text-align: center;
+	border: 2px solid black;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	padding: 0.5em 1em;
+	width: 100%;
+	max-width: 380px;
+}
+
+.btns {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+#create-top {
+	text-align: center;
+}
+
