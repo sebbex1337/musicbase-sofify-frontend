@@ -219,7 +219,24 @@ button {
 	grid-template-columns: 1fr 1fr;
 }
 
+input {
+	width: 100%;
+	max-width: 350px;
+	padding: 1em;
+	border: 2px solid rgb(0, 74, 68);
+	display: block;
+	color: black;
+}
+
+form {
+	padding: 1em 1em 2em;
+	text-align: center;
+}
+
 .top-part {
 	text-align: center;
 }
 
+dialog {
+	background-color: var(--light-purple);
+}
