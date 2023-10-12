@@ -1,5 +1,5 @@
-import { createArtist } from "./controller/http.js";
-import { displayUpdatedLists } from "./app.js";
+import { createArtist } from "../http.js";
+import { displayUpdatedLists } from "../../app.js";
 
 function showCreateArtist() {
     const dialog = document.querySelector("#create-artist-dialog");

@@ -5,14 +5,16 @@ export default class AlbumRenderer extends itemRenderer {
         const album = this.item;
         const html = /* HTML */ `
             <section class="grid-item">
-                <div>
-                    <img src="${album.image}" />
-                </div>
-                <div>
+                <img src="${album.image}" />
+                <section>
                     <h3>${album.name}</h3>
                     <p>${album.releaseDate}</p>
                     <p>${this.formatArtists(album.artists)}</p>
-                </div>
+                </section>
+                <section class="btns">
+                    <button class="btn-delete">Delete</button>
+                    <button class="btn-update">Update</button>
+                </section>
             </section>
         `;
         return html;
@@ -27,5 +29,9 @@ export default class AlbumRenderer extends itemRenderer {
             artistsString = listOfArtists[0].name;
         }
         return artistsString;
+    }
+    postRender(element) {
+        element.querySelector(":last-child .btn-delete").addEventListener("click", () => console.log("TODO: delete album"));
+        element.querySelector(":last-child .btn-update").addEventListener("click", () => console.log("TODO: update album"));
     }
 }

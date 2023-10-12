@@ -22,22 +22,15 @@
 			<!-- Home View -->
 			<!-- Route: #home -->
 			<section id="home" class="view-content">
-				<h2>Home</h2>
-				<p>This is Sofify, a simple showing of different Artists and their tracks and albums</p>
-				<!--Search bar-->
-				<input type="search" id="search" placeholder="Search for" />
-				<button type="submit">Search</button>
+				<section class="top-part">
+					<h2>Home</h2>
+					<p>This is Sofify, a simple showing of different Artists and their tracks and albums</p>
+					<!--Search bar-->
+					<input type="search" id="search" placeholder="Search for" />
+					<button type="submit">Search</button>
+				</section>
 				<section class="search-tables">
-					<table id="artist_search_table" cellspacing="0">
-						<thead>
-							<tr>
-								<th>Name</th>
-								<th>Image</th>
-								<th>website</th>
-							</tr>
-						</thead>
-						<tbody></tbody>
-					</table>
+					<section class="grid-container-search" id="search-artists-container"></section>
 
 					<!-- table -->
 					<table id="track_search_table" cellspacing="0">
@@ -51,7 +44,8 @@
 						<tbody></tbody>
 					</table>
 
-					<table id="album_search_table" cellspacing="0">
+					<section class="grid-container-search" id="search-albums-container"></section>
+					<!-- <table id="album_search_table" cellspacing="0">
 						<thead>
 							<tr>
 								<th>Name</th>
@@ -61,14 +55,14 @@
 							</tr>
 						</thead>
 						<tbody></tbody>
-					</table>
+					</table> -->
 				</section>
 			</section>
 
 			<!-- Artists View -->
 			<!-- Route: #artists -->
 			<section id="artists" class="view-content">
-				<section id="create-top">
+				<section class="top-part">
 					<h2>Artists</h2>
 					<button id="cadBtn">Create Artist</button>
 				</section>
@@ -87,26 +81,29 @@
 				</section>
 				</dialog>
 
-				<dialog class="update-dialog" id="update-artist-dialog">
-				<section class="artist-update-form-container">
-						<form id="update-artist" method="dialog">
-							<h2>Update Artist</h2>
-							<input type="text" name="name" placeholder="Enter name" required>
-							<input type="url" name="image" placeholder="Enter image URL" required>
-							<input type="url" name="website" placeholder="Enter website URL" required>
-							<input type="text" name="id" required disabled>
-							<input type="submit" name="submit-btn", value="Update Artist">
-							<button type="button">Close</button>
-						</form>
-				</section>
-				</dialog>
 			</section>
+			<!-- Has to be outside the route: #artists otherwise it will not work in search -->
+			<dialog class="update-dialog" id="update-artist-dialog">
+			<section class="artist-update-form-container">
+					<form id="update-artist" method="dialog">
+						<h2>Update Artist</h2>
+						<input type="text" name="name" placeholder="Enter name" required>
+						<input type="url" name="image" placeholder="Enter image URL" required>
+						<input type="url" name="website" placeholder="Enter website URL" required>
+						<input type="text" name="id" required disabled>
+						<input type="submit" name="submit-btn", value="Update Artist">
+						<button type="button">Close</button>
+					</form>
+			</section>
+			</dialog>
 
 			<!-- Tracks View -->
 			<!-- Route: #tracks -->
 			<section id="tracks" class="view-content">
-				<h2>Tracks</h2>
-				<button id="create-track">Create Track</button>
+				<section class="top-part">
+					<h2>Tracks</h2>
+					<button id="create-track">Create Track</button>
+				</section>
 				<!-- table -->
 				<section class="track-table-container" class="grid-container">
 					<table id="track_table" cellspacing="0">
@@ -125,7 +122,9 @@
 					<form id="create-track-form" method="dialog">
 						<h2>Create new Track</h2>
 						<input type="text" name="name" placeholder="Enter song name" required>
-						<input type="text" name="artist" placeholder="Enter artist" required>
+						<select name="artists" id="track-create-select">
+							<option value="" disabled selected>Select Artist</option>
+						</select>
 						<input type="text" name="duration" placeholder="Enter with format 00:00:00" required>
 						<input type="submit" name="submit-btn" value="Create Track">
 						<button>Close</button>
@@ -138,7 +137,10 @@
 			<!-- Albums View -->
 			<!-- Route: #albums -->
 			<section id="albums" class="view-content">
-				<h2>Albums</h2>
+				<section class="top-part">
+					<h2>Albums</h2>
+					<button id="create-album">Create Album</button>
+				</section>
 				<section id="albums-container" class="grid-container"></section>
 				<dialog class="create-dialog" id="create-album-dialog">
 				<section class="album-create-form-container">

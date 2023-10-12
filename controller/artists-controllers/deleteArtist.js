@@ -1,6 +1,6 @@
 //-------Delete--------//
-import { deleteArtist } from "./controller/http.js";
-import { displayUpdatedLists } from "./app.js";
+import { deleteArtist } from "../http.js";
+import { displayUpdatedLists } from "../../app.js";
 
 async function deleteArtistClicked(artist) {
     console.log(artist);

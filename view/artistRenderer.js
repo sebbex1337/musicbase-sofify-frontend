@@ -1,6 +1,6 @@
 import ItemRenderer from "./itemRenderer.js";
-import { deleteArtistClicked } from "../deleteArtist.js";
-import { updateClicked } from "../updateArtists.js";
+import { deleteArtistClicked } from "../controller/artists-controllers/deleteArtist.js";
+import { updateArtistClicked } from "../controller/artists-controllers/updateArtists.js";
 
 export default class ArtistRenderer extends ItemRenderer {
     render() {
@@ -22,6 +22,13 @@ export default class ArtistRenderer extends ItemRenderer {
     }
     postRender(element) {
         element.querySelector(":last-child .btn-delete").addEventListener("click", () => deleteArtistClicked(this.item));
-        element.querySelector(":last-child .btn-update").addEventListener("click", () => updateClicked(this.item));
+        element.querySelector(":last-child .btn-update").addEventListener("click", () => updateArtistClicked(this.item));
+    }
+    renderSelectOption() {
+        const artist = this.item;
+        const html = /* html */ `
+			<option value="${artist.id}">${artist.name}</option>
+		`;
+        return html;
     }
 }

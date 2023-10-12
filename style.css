@@ -219,7 +219,7 @@ button {
 	grid-template-columns: 1fr 1fr;
 }
 
-#create-top {
+.top-part {
 	text-align: center;
 }
 
