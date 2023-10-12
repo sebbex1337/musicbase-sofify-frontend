@@ -1,5 +1,5 @@
 import { createArtist } from "./controller/http.js";
-import { displayUpatedLists } from "./app.js";
+import { displayUpdatedLists } from "./app.js";
 
 function showCreateArtist() {
     const dialog = document.querySelector("#create-artist-dialog");
@@ -16,9 +16,11 @@ async function createArtistClicked(event) {
         image: form.image.value,
         website: form.website.value,
     };
-    await createArtist(artist);
-
-    displayUpatedLists();
+    const response = await createArtist(artist);
+    if (response) {
+        await displayUpdatedLists();
+    }
+    document.querySelector("#create-artist-dialog").close();
 }
 
 export { showCreateArtist };

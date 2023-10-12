@@ -3,14 +3,17 @@ import itemRenderer from "./itemRenderer.js";
 export default class AlbumRenderer extends itemRenderer {
     render() {
         const album = this.item;
-        // console.log(album.image);
         const html = /* HTML */ `
-            <tr>
-                <td>${album.name}</td>
-                <td>${album.releaseDate}</td>
-                <td><img src="${album.image}" /></td>
-                <td>${this.formatArtists(album.artists)}</td>
-            </tr>
+            <section class="grid-item">
+                <div>
+                    <img src="${album.image}" />
+                </div>
+                <div>
+                    <h3>${album.name}</h3>
+                    <p>${album.releaseDate}</p>
+                    <p>${this.formatArtists(album.artists)}</p>
+                </div>
+            </section>
         `;
         return html;
     }

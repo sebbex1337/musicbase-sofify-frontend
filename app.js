@@ -1,11 +1,12 @@
 import { readAllArtists, readAllTracks, readAllAlbums, getAllSearched } from "./controller/http.js";
 import { initViews } from "./view.js";
 import { showCreateArtist } from "./createArtist.js";
-
+import { showCreateTrack } from "./createTrack.js";
 import listRenderer from "./view/listRenderer.js";
 import artistRenderer from "./view/artistRenderer.js";
 import trackRenderer from "./view/trackRenderer.js";
 import albumRenderer from "./view/albumRenderer.js";
+import { deleteArtistClicked } from "./deleteArtist.js";
 
 window.addEventListener("load", initApp);
 let artistsList;
@@ -19,12 +20,13 @@ async function initApp() {
     document.querySelector("#search").addEventListener("keyup", search);
     document.querySelector("#search").addEventListener("change", search);
     document.querySelector("#cadBtn").addEventListener("click", showCreateArtist);
+    document.querySelector("#create-track").addEventListener("click", showCreateTrack);
     // --- Init views --- //
     initViews();
-    displayUpatedLists();
+    displayUpdatedLists();
 }
 
-async function displayUpatedLists() {
+async function displayUpdatedLists() {
     const artists = await readAllArtists();
     const tracks = await readAllTracks();
     const albums = await readAllAlbums();
@@ -36,7 +38,7 @@ async function displayUpatedLists() {
     tracksList = new listRenderer(tracks, "#track_table tbody", trackRenderer);
     tracksList.render();
 
-    albumsList = new listRenderer(albums, "#album_table tbody", albumRenderer);
+    albumsList = new listRenderer(albums, "#albums-container", albumRenderer);
     albumsList.render();
 }
 
@@ -133,4 +135,4 @@ async function search(event) {
     displaySearchArtists(searchedArtists);
 }
 
-export { displayUpatedLists };
+export { displayUpdatedLists };

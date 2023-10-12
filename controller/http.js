@@ -9,29 +9,12 @@ let allArtists = [];
 let allTracks = [];
 let allAlbums = [];
 
-let lastArtistsFetch = 0;
-let lastTracksFetch = 0;
-let lastAlbumsFetch = 0;
-
 // ----- Read all artists ----- //
 async function readAllArtists() {
-    const now = Date.now();
-    const timeLastFetched = now - lastArtistsFetch;
-    if (timeLastFetched > 10_000) {
-        /*         console.log(now, "now");
-        console.log(timeLastFetched, "lasttimefetch");
-        console.log("Refetch"); */
-        await readArtistsAgain();
-    }
-    return allArtists;
-}
-
-async function readArtistsAgain() {
     const res = await fetch(`${endpoint}/artists`);
     const artistsData = await res.json();
     allArtists = artistsData.map((jsonObj) => new Artist(jsonObj));
-
-    lastArtistsFetch = Date.now();
+    return allArtists;
 }
 
 // ----- Create new artist ----- //
@@ -40,11 +23,10 @@ async function createArtist(artist) {
     const res = await fetch(`${endpoint}/artists`, {
         method: "POST",
         headers: {
-            "Content Type:": "application/json",
+            "Content-Type": "application/json",
         },
         body: json,
     });
-    await readArtistsAgain();
 
     return res.ok;
 }
@@ -52,50 +34,31 @@ async function createArtist(artist) {
 // ----- Update artist ----- //
 async function updateArtist(artist) {
     const json = JSON.stringify(artist);
-    const res = await fetch(`${endpoint}/${artist.id}`, {
+    const res = await fetch(`${endpoint}/artists/${artist.id}`, {
         method: "PUT",
-        headers: {
-            "Content Type": "application/json",
-        },
         body: json,
+        headers: {
+            "Content-Type": "application/json",
+        },
     });
-    await readArtistsAgain();
 
     return res.ok;
 }
 
 // ----- Delete artists ----- //
 async function deleteArtist(artist) {
-    const res = await fetch(`${endpoint}/${artist.id}`, {
+    const res = await fetch(`${endpoint}/artists/${artist.id}`, {
         method: "DELETE",
     });
-    await readArtistsAgain();
 
     return res.ok;
 }
 
 // ---- Read all songs ------ //
 async function readAllTracks() {
-    const now = Date.now();
-    const timeLastFetched = now - lastTracksFetch;
-    if (timeLastFetched > 10_000) {
-        await readTracksAgain();
-    }
-    return allTracks;
-}
-
-async function readTracksAgain() {
     const res = await fetch(`${endpoint}/tracks`);
     const tracksData = await res.json();
     allTracks = tracksData.map((jsonObj) => new Track(jsonObj));
-
-    lastTracksFetch = Date.now();
-}
-
-async function getTracks() {
-    const res = await fetch(`${endpoint}/tracks`);
-    const tracksData = await res.json();
-    const allTracks = tracksData.map((jsonObj) => new Track(jsonObj));
     return allTracks;
 }
 
@@ -104,12 +67,11 @@ async function createTrack(tracks) {
     const json = JSON.stringify(tracks);
     const res = await fetch(`${endpoint}/tracks`, {
         method: "POST",
-        headers: {
-            "Content Type": "application/json",
-        },
         body: json,
+        headers: {
+            "Content-Type": "application/json",
+        },
     });
-    await readTracksAgain();
 
     return res.ok;
 }
@@ -119,42 +81,30 @@ async function updateTrack(track) {
     const json = JSON.stringify(track);
     const res = await fetch(`${endpoint}/${track.id}`, {
         method: "PUT",
-        headers: {
-            "Content Type": "application/json",
-        },
         body: json,
+        headers: {
+            "Content-Type": "application/json",
+        },
     });
-    await readTracksAgain();
 
     return res.ok;
 }
 
 // ----- Delete song ----- //
 async function deleteTrack(tracks) {
-    const res = await fetch(`${endpoint}/${tracks.id}`, {
+    const res = await fetch(`${endpoint}/tracks/${tracks.id}`, {
         method: "DELETE",
     });
-    await readTracksAgain();
 
     return res.ok;
 }
 
 // ----- Read all albums ---- //
 async function readAllAlbums() {
-    const now = Date.now();
-    const timeLastFetched = now - lastAlbumsFetch;
-    if (timeLastFetched > 10_000) {
-        await readAlbumsAgain();
-    }
-    return allAlbums;
-}
-
-async function readAlbumsAgain() {
     const res = await fetch(`${endpoint}/albums`);
     const albumsData = await res.json();
     allAlbums = albumsData.map((jsonObj) => new Album(jsonObj));
-
-    lastAlbumsFetch = Date.now();
+    return allAlbums;
 }
 
 // ----- Create new album ----- //
@@ -162,12 +112,11 @@ async function createAlbum(albums) {
     const json = JSON.stringify(albums);
     const res = await fetch(`${endpoint}/albums`, {
         method: "POST",
-        headers: {
-            "Content Type": "application/jsom",
-        },
         body: json,
+        headers: {
+            "Content-Type": "application/jsom",
+        },
     });
-    await readAlbumsAgain();
 
     return res.ok;
 }
@@ -177,22 +126,20 @@ async function updateAlbum(album) {
     const json = JSON.stringify(album);
     const res = await fetch(`${endpoint}/${album.id}`, {
         method: "PUT",
-        headers: {
-            "Content Type": "application/json",
-        },
         body: json,
+        headers: {
+            "Content-Type": "application/json",
+        },
     });
-    await readAlbumsAgain();
 
     return res.ok;
 }
 
 // ----- Delete album ----- //
 async function deleteAlbum(albums) {
-    const res = await fetch(`${endpoint}/${albums.id}`, {
+    const res = await fetch(`${endpoint}/albums/${albums.id}`, {
         method: "DELETE",
     });
-    await readAlbumsAgain();
 
     return res.ok;
 }
