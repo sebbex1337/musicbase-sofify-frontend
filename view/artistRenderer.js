@@ -24,11 +24,4 @@ export default class ArtistRenderer extends ItemRenderer {
         element.querySelector(":last-child .btn-delete").addEventListener("click", () => deleteArtistClicked(this.item));
         element.querySelector(":last-child .btn-update").addEventListener("click", () => updateArtistClicked(this.item));
     }
-    renderSelectOption() {
-        const artist = this.item;
-        const html = /* html */ `
-			<option value="${artist.id}">${artist.name}</option>
-		`;
-        return html;
-    }
 }

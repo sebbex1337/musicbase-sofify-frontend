@@ -2,6 +2,7 @@ import { readAllArtists, readAllTracks, readAllAlbums, getAllSearched } from "./
 import { initViews } from "./view.js";
 import { showCreateArtist } from "./controller/artists-controllers/createArtist.js";
 import { showCreateTrack } from "./controller/tracks-controller/createTrack.js";
+import { showCreateAlbum } from "./controller/albums-controller/createAlbum.js";
 import listRenderer from "./view/listRenderer.js";
 import artistRenderer from "./view/artistRenderer.js";
 import trackRenderer from "./view/trackRenderer.js";
@@ -20,6 +21,8 @@ async function initApp() {
     document.querySelector("#search").addEventListener("change", search);
     document.querySelector("#cadBtn").addEventListener("click", showCreateArtist);
     document.querySelector("#create-track").addEventListener("click", showCreateTrack);
+    document.querySelector("#create-album-top").addEventListener("click", showCreateAlbum);
+
     // --- Init views --- //
     initViews();
     await displayUpdatedLists();

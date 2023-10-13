@@ -1,3 +1,5 @@
+import { updateAlbumClicked } from "../controller/albums-controller/updateAlbum.js";
+import { deleteAlbumClicked } from "../controller/albums-controller/deleteAlbum.js";
 import itemRenderer from "./itemRenderer.js";
 
 export default class AlbumRenderer extends itemRenderer {
@@ -31,7 +33,7 @@ export default class AlbumRenderer extends itemRenderer {
         return artistsString;
     }
     postRender(element) {
-        element.querySelector(":last-child .btn-delete").addEventListener("click", () => console.log("TODO: delete album"));
-        element.querySelector(":last-child .btn-update").addEventListener("click", () => console.log("TODO: update album"));
+        element.querySelector(":last-child .btn-delete").addEventListener("click", () => deleteAlbumClicked(this.item));
+        element.querySelector(":last-child .btn-update").addEventListener("click", () => updateAlbumClicked(this.item));
     }
 }

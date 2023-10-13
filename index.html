@@ -47,17 +47,6 @@
 					</table>
 
 					<section class="grid-container-search" id="search-albums-container"></section>
-					<!-- <table id="album_search_table" cellspacing="0">
-						<thead>
-							<tr>
-								<th>Name</th>
-								<th>Release Date</th>
-								<th>Image</th>
-								<th>Artist</th>
-							</tr>
-						</thead>
-						<tbody></tbody>
-					</table> -->
 				</section>
 			</section>
 
@@ -73,12 +62,14 @@
 				<dialog class="create-dialog" id="create-artist-dialog">
 				<section class="artist-create-form-container">
 						<form id="create-artist" method="dialog">
-							<h2>Create new Artist</h2>
-							<input type="text" name="name" placeholder="Enter name" required>
-							<input type="url" name="image" placeholder="Enter image URL" required>
-							<input type="url" name="website" placeholder="Enter website URL" required>
-							<input type="submit" name="submit-btn", value="Create Artist">
-							<button type="button">Close</button>
+							<section id="form-section-container">
+								<h2>Create new Artist</h2>
+								<input type="text" name="name" placeholder="Enter name" required>
+								<input type="url" name="image" placeholder="Enter image URL" required>
+								<input type="url" name="website" placeholder="Enter website URL" required>
+								<input type="submit" name="submit-btn", value="Create Artist">
+								<button class="close-btn" type="button">Close</button>
+							</section>
 						</form>
 				</section>
 				</dialog>
@@ -94,7 +85,8 @@
 						<input type="url" name="website" placeholder="Enter website URL" required>
 						<input type="text" name="id" required disabled>
 						<input type="submit" name="submit-btn", value="Update Artist">
-						<button type="button">Close</button>
+						<button class="close-btn" type="button">Close</button>
+						
 					</form>
 			</section>
 			</dialog>
@@ -114,6 +106,7 @@
 								<th>Name</th>
 								<th>Artist(s)</th>
 								<th>Duration</th>
+								<th>Edit</th>
 							</tr>
 						</thead>
 						<tbody></tbody>
@@ -129,11 +122,24 @@
 						</select>
 						<input type="text" name="duration" placeholder="Enter with format 00:00:00" required>
 						<input type="submit" name="submit-btn" value="Create Track">
-						<button>Close</button>
+						<button class="close-btn" type="button">Close</button>
 					</form>
 				</section>
 				</dialog>
 			</section>
+			<!-- Has to be outside the route: #tracks otherwise it will not work in search -->
+			<dialog class="update-dialog" id="update-track-dialog">
+			<section class="track-update-form-container">
+					<form id="update-track" method="dialog">
+						<h2>Update Track</h2>
+						<input type="text" name="name" placeholder="Enter name" required>
+						<input type="text" name="duration" placeholder="Hours:Minutes:Seconds" required>
+						<input type="text" name="id" required disabled>
+						<input type="submit" name="submit-btn", value="Update Track">
+						<button class="close-btn" type="button">Close</button>
+					</form>
+			</section>
+			</dialog>
 			
 
 			<!-- Albums View -->
@@ -141,22 +147,41 @@
 			<section id="albums" class="view-content">
 				<section class="top-part">
 					<h2>Albums</h2>
-					<button id="create-album">Create Album</button>
+					<button id="create-album-top">Create Album</button>
 				</section>
 				<section id="albums-container" class="grid-container"></section>
 				<dialog class="create-dialog" id="create-album-dialog">
 				<section class="album-create-form-container">
 					<form id="create-album" method="dialog">
+						<section id="form-section-container">
 						<h2>Create new Album</h2>
-						<input type="text" placeholder="Enter album name" required>
-						<input type="date" placeholder="Enter date album was released" required>
-						<input type="url" placeholder="Enter image URL" required>
-						<input type="text" placeholder="Enter name of artist" required>
-						<button>Create Album</button>
+						<input type="text" name="title" placeholder="Enter album name" required>
+						<input type="number" name="date" placeholder="Enter year album was released" required>
+						<input type="url" name="image" placeholder="Enter image URL" required>
+						<select name="artists" id="album-create-select">
+							<option value="" disabled selected>Select Artist</option>
+						</select>
+						<input type="submit" name="submit-btn", value="Create Album">
+						<button class="close-btn" type="button">Close</button>
+						</section>
 					</form>
 				</section>
 				</dialog>
 			</section>
+			
+			<dialog class="update-dialog" id="update-album-dialog">
+			<section class="album-update-form-container">
+					<form id="update-album" method="dialog">
+						<h2>Update Album</h2>
+						<input type="text" name="name" placeholder="Enter album name" required>
+						<input type="number" name="date" placeholder="Enter year album was released" required>
+						<input type="url" name="image" placeholder="Enter image URL" required>
+						<input type="text" name="id" required disabled>
+						<input type="submit" name="submit-btn", value="Update Album">
+						<button class="close-btn" type="button">Close</button>
+					</form>
+			</section>
+			</dialog>
 		</main>
 	</body>
 	<script src="app.js" type="module"></script>

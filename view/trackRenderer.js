@@ -1,3 +1,5 @@
+import { deleteTrackClicked } from "../controller/tracks-controller/deleteTrack.js";
+import { updateTrackClicked } from "../controller/tracks-controller/updateTrack.js";
 import ItemRenderer from "./itemRenderer.js";
 
 export default class TrackRenderer extends ItemRenderer {
@@ -8,7 +10,13 @@ export default class TrackRenderer extends ItemRenderer {
             <td>${track.name}</td>
             <td>${this.formatArtists(track.artists)}</td>
             <td>${track.duration}</td>
-    </tr>
+            <td>
+                <section>
+                    <button class="btn-delete">DELETE</button>
+                    <button class="btn-update">UPDATE</button>
+                </section>
+            </td>
+        </tr>
         `;
         return html;
     }
@@ -22,5 +30,9 @@ export default class TrackRenderer extends ItemRenderer {
             artistsString = listOfArtists[0].name;
         }
         return artistsString;
+    }
+    postRender(element) {
+        element.querySelector(":last-child .btn-delete").addEventListener("click", () => deleteTrackClicked(this.item));
+        element.querySelector(":last-child .btn-update").addEventListener("click", () => updateTrackClicked(this.item));
     }
 }

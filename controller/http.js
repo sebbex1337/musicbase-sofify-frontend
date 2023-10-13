@@ -108,13 +108,13 @@ async function readAllAlbums() {
 }
 
 // ----- Create new album ----- //
-async function createAlbum(albums) {
-    const json = JSON.stringify(albums);
+async function createAlbum(album) {
+    const json = JSON.stringify(album);
     const res = await fetch(`${endpoint}/albums`, {
         method: "POST",
         body: json,
         headers: {
-            "Content-Type": "application/jsom",
+            "Content-Type": "application/json",
         },
     });
 
@@ -124,7 +124,7 @@ async function createAlbum(albums) {
 // ----- Update album ----- //
 async function updateAlbum(album) {
     const json = JSON.stringify(album);
-    const res = await fetch(`${endpoint}/${album.id}`, {
+    const res = await fetch(`${endpoint}/albums/${album.id}`, {
         method: "PUT",
         body: json,
         headers: {

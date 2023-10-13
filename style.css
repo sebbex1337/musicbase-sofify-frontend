@@ -97,12 +97,6 @@ table {
 	border: 1px solid black;
 }
 
-/* dialog styling */
-.create-dialog {
-	background-color: (var(--light-purple));
-	border-color: var(--border-color);
-}
-
 /* Table css */
 /* Taken from https://freefrontend.com/css-tables/ */
 table {
@@ -236,7 +230,20 @@ form {
 .top-part {
 	text-align: center;
 }
-
+/*-----------dialog-----------*/
 dialog {
-	background-color: var(--light-purple);
+	z-index: 99999;
+	background-color: #292929;
+	border: 2px solid #f5c7f7;
+	color: white;
+	width: 50%;
+	height: fit-content;
+	padding: 25px
+	margin: 25px 50px 75px 100px;
+	
+}
+
+.close-btn{
+	background-color: rgb(227, 74, 74);
+
 }
