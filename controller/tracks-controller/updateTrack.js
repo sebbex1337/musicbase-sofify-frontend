@@ -25,7 +25,6 @@ async function updateTrack(event) {
         duration: form.duration.value,
     };
     const res = await RESTAPI.updateTrack(track);
-    console.log(res);
     if (res) {
         await displayUpdatedLists();
         document.querySelector("#update-track-dialog").close();

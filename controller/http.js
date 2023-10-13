@@ -79,7 +79,7 @@ async function createTrack(tracks) {
 // ----- Update song ----- //
 async function updateTrack(track) {
     const json = JSON.stringify(track);
-    const res = await fetch(`${endpoint}/${track.id}`, {
+    const res = await fetch(`${endpoint}/tracks/${track.id}`, {
         method: "PUT",
         body: json,
         headers: {

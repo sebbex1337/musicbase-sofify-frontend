@@ -9,7 +9,6 @@ function showUpdateAlbum() {
 
 function updateAlbumClicked(album) {
     showUpdateAlbum();
-    console.log(album);
     const updateForm = document.querySelector("#update-album");
     updateForm.name.value = album.name;
     updateForm.image.value = album.image;
